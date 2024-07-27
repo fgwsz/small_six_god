@@ -80,13 +80,13 @@ void small_six_god(void)noexcept{
         <<"number_len:"<<number_len<<'\n'
         <<"number_sum:"<<number_sum<<'\n'
     ;
-    unsigned long long sum=time_sum+random_sum+number_sum;
-    unsigned long long len=time_len+random_len+number_len;
-    unsigned long long result=(sum-(len-1))%6;
+    unsigned long long total_sum=time_sum+random_sum+number_sum;
+    unsigned long long total_len=time_len+random_len+number_len;
+    unsigned long long result=(total_sum-(total_len-1))%6;
     ::std::cout
-        <<"len=(time_len+random_len+number_len)="<<len<<'\n'
-        <<"sum=(time_summ+random_sum+number_sum)="<<sum<<'\n'
-        <<"result=(sum-(len-1))%6="<<result<<'\n'
+        <<"total_len=(time_len+random_len+number_len)="<<total_len<<'\n'
+        <<"total_sum=(time_summ+random_sum+number_sum)="<<total_sum<<'\n'
+        <<"result=(total_sum-(total_len-1))%6="<<result<<'\n'
         <<::result_info[result]<<'\n'
     ;
 }
