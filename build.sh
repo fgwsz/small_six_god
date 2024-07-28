@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 root_path=$(dirname "$(readlink -f "$0")")
 project_name=$(basename $root_path)
 build_path="$root_path/build/linux"
