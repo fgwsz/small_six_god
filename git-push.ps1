@@ -1,8 +1,7 @@
-#!/bin/sh
-root_path=$(dirname "$(readlink -f "$0")")
+$root_path=Split-Path -Parent $MyInvocation.MyCommand.Definition
 echo "You Can Input q For Abort."
-read -p "Input Git Commit Info: " commit_info
-if [ "$commit_info" != "q" ]; then
+$commit_info=Read-Host -Prompt "Input Git Commit Info"
+if(!($commit_info -eq "q")){
     cd $root_path
     git add ./source/*
     git add ./CMakeLists.txt
@@ -11,6 +10,6 @@ if [ "$commit_info" != "q" ]; then
     git add ./.gitignore
     git add ./*.ps1
     git add ./*.sh
-    git commit -m "$commit_info"
+    git commit -m $commit_info
     git push
-fi
+}
