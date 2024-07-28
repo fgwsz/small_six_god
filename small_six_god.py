@@ -307,22 +307,6 @@ def char_sum(number):
     return result
 
 def small_six_god():
-    time_val=time_string()
-    time_len=len(time_val)
-    time_sum=char_sum(time_val)
-    
-    print(f"time_val:{time_val}")
-    print(f"time_len:{time_len}")
-    print(f"time_sum:{time_sum}")
-    
-    random_val=random_string()
-    random_len=len(random_val)
-    random_sum=char_sum(random_val)
-    
-    print(f"random_val:{random_val}")
-    print(f"random_len:{random_len}")
-    print(f"random_sum:{random_sum}")
-    
     continue_flag=True
     while continue_flag:
         number_val=input("Input number(unsigned integer) with enter:")
@@ -334,20 +318,22 @@ def small_six_god():
                 print("Input error!")
                 continue_flag=True
                 break
-
     number_len=len(number_val)
     number_sum=char_sum(number_val)
-    
-    print(f"number_val:{number_val}")
-    print(f"number_len:{number_len}")
-    print(f"number_sum:{number_sum}")
-    
+    time_val=time_string()
+    time_len=len(time_val)
+    time_sum=char_sum(time_val)
+    random_val=random_string()
+    random_len=len(random_val)
+    random_sum=char_sum(random_val)
     total_sum=time_sum+random_sum+number_sum
     total_len=time_len+random_len+number_len
     result=(total_sum-(total_len-1))%6
-    
-    print(f"total_len=(time_len+random_len+number_len)={total_len}")
-    print(f"total_sum=(time_sum+random_sum+number_sum)={total_sum}")
+    print(f"time\t:val={time_val},sum={time_sum},len={time_len}")
+    print(f"random\t:val={random_val},sum={random_sum},len={random_len}")
+    print(f"number\t:val={number_val},sum={number_sum},len={number_len}")
+    print(f"total_sum=time_sum+random_sum+number_sum={total_sum}")
+    print(f"total_len=time_len+random_len+number_len={total_len}")
     print(f"result=(total_sum-(total_len-1))%6={result}")
     global result_info
     print(result_info[result])
