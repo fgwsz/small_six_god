@@ -5,7 +5,6 @@ read -p "Input Git Commit Info: " commit_info
 if [ "$commit_info" != "q" ]; then
     cd $root_path
     git add ./source/*
-    git add ./*.py
     git add ./CMakeLists.txt
     git add ./LICENSE
     git add ./README.md
