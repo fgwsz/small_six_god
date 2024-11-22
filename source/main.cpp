@@ -26,17 +26,17 @@
     );
     return time_cstr;
 }
-//[begin,end)
+//[begin,finish]
 template<typename _Type>
 _Type random_value(
     _Type&& begin
-    ,_Type&& end=::std::numeric_limits<_Type>::max()
+    ,_Type&& finish=::std::numeric_limits<_Type>::max()
 ){
     ::std::random_device rd={};
     ::std::mt19937 gen(rd());
     ::std::uniform_int_distribution<_Type> dist(
         ::std::forward<_Type>(begin),
-        ::std::forward<_Type>(end)
+        ::std::forward<_Type>(finish)
     );
     return dist(gen);
 }
@@ -53,7 +53,7 @@ consteval ::std::size_t array_size(_Type(&array_ref)[_n]){
 }
 ::std::uint32_t random_chinese_character(void){
     return ::chinese_characters[
-        ::random_value<::std::size_t>(0,::array_size(chinese_characters))
+        ::random_value<::std::size_t>(0,::array_size(chinese_characters)-1)
     ];
 }
 void utf32_to_utf8(::std::uint32_t utf32,char*utf8){
@@ -81,7 +81,7 @@ void utf32_to_utf8(::std::uint32_t utf32,char*utf8){
         *++utf8='\0';
     }
 }
-int main(void){
+void small_six_god(void){
     unsigned long long number_sum=0;
     bool continue_flag=true;
     ::std::string number_val="";
@@ -131,6 +131,8 @@ int main(void){
         ,total_sum,total_len,result
         ,::std::string{::result_info[result]}.c_str()
     );
+}
+void god_sentences(void){
     ::std::uint32_t utf32=0;
     char utf8[5]={};
     ::std::printf("神谕:\n");
@@ -143,5 +145,26 @@ int main(void){
         }
         ::std::printf("%c\n",(line+1)%2!=0?',':'.');
     }
+}
+void three_elements(void){
+    auto tian_shi=::random_value(0,100);
+    auto di_li=::random_value(0,100);
+    auto ren_he=::random_value(0,100);
+    auto total_score=static_cast<float>(tian_shi+di_li+ren_he)/3;
+    ::std::printf(
+        "天时: %i%%\n"
+        "地利: %i%%\n"
+        "人和: %i%%\n"
+        "事成: %.2f%%\n"
+        ,tian_shi
+        ,di_li
+        ,ren_he
+        ,total_score
+    );
+}
+int main(void){
+    ::small_six_god();
+    ::god_sentences();
+    ::three_elements();
     return 0;
 }
