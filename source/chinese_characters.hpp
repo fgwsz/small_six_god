@@ -1,6 +1,7 @@
 #pragma once
-#include<cstddef>
-static constexpr uint32_t chinese_characters[]={
+#include<cstdint> // ::std::uint32_t
+
+static constexpr ::std::uint32_t chinese_characters[]={
     0x4e00,
     0x4e01,
     0x4e03,
